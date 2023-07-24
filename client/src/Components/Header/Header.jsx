@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { AppBar, Toolbar, Box, Typography } from "@mui/material";
-import Search from "../Search";
+import Search from "./Search";
 import CustomButton from "./CustomButton";
 
 const StyledHeader = styled(AppBar)`
