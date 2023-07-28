@@ -106,8 +106,8 @@ const LoginDialog = ({ open, setOpen }) => {
     setSignup({ ...Signup, [e.target.name]: e.target.value });
   };
 
-  const SignupUser = () => {
-    authenticateSignup(Signup);
+  const SignupUser = async () => {
+    let response = await authenticateSignup(Signup);
   };
   return (
     <Dialog
