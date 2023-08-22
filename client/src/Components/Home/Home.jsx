@@ -4,10 +4,12 @@ import { Box } from "@mui/material";
 import Banner from "./Banner";
 import Navbar from "./Navbar";
 import Slide from "./Slide";
+import MidSlide from "./MidSlide";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getProducts } from "../../redux/action/ProductAction";
+
 
 const Container = styled(Box)`
   padding: 10px;
@@ -26,7 +28,7 @@ const Home = () => {
       <Navbar />
       <Container>
         <Banner />
-        <Slide products={products} title='Deal of the Day' timer={true}/>
+        <MidSlide products={products}/>
         <Slide products={products} title='Discount for You' timer={false}/>
         <Slide products={products} title='Suggesting Items' timer={false}/>
         <Slide products={products} title='Top Selection' timer={false}/>
