@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
-import Banner from "./Banner";
-import Navbar from "./Navbar";
 import { Box } from "@mui/material";
 
+import Banner from "./Banner";
+import Navbar from "./Navbar";
+import Slide from "./Slide";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -15,7 +16,6 @@ const Container = styled(Box)`
 
 const Home = () => {
   const { products } = useSelector((state) => state.getProducts);
-  console.log(products);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +26,15 @@ const Home = () => {
       <Navbar />
       <Container>
         <Banner />
+        <Slide products={products} title='Deal of the Day' timer={true}/>
+        <Slide products={products} title='Discount for You' timer={false}/>
+        <Slide products={products} title='Suggesting Items' timer={false}/>
+        <Slide products={products} title='Top Selection' timer={false}/>
+        <Slide products={products} title='Recommended Items' timer={false}/>
+        <Slide products={products} title='Trending Offers' timer={false}/>
+        <Slide products={products} title="Season's top picks " timer={false}/>
+        <Slide products={products} title='Top deals on Accessories' timer={false}/>
+
       </Container>
     </Box>
   );
