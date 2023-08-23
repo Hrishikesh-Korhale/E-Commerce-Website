@@ -2,11 +2,29 @@ import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import { bannerData } from '../../constants/data';
 import styled from '@emotion/styled';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const Image = styled('img')({
-    width: '100%',
-    height: 280
-})
+const theme = createTheme({
+    
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+  });
+
+const Image = styled('img')(({ theme }) => ({
+  width: '100%',
+  height: 280,
+  [theme.breakpoints.down('sm')]: {
+      objectFit: 'cover',
+      height: 180
+  }
+}));
 
 const responsive = {
     desktop: {
@@ -24,6 +42,7 @@ const responsive = {
   };
 const Banner = () => {
     return(
+      <ThemeProvider theme={theme}>
         <Carousel responsive={responsive}
         swipeable={false}
         draggable={false}
@@ -40,6 +59,7 @@ const Banner = () => {
                 ))
             }
         </Carousel>
+        </ThemeProvider>
     )
 }
 
