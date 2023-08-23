@@ -2,14 +2,21 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import { Box } from "@mui/material";
 import DataProvider from "./contex/dataProvider";
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import DetailView from "./Components/details/DetailView";
 
 function App() {
   return (
     <DataProvider>
+      <BrowserRouter>
       <Header />
       <Box style={{ marginTop: 55 }}>
-        <Home />
+        <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/product/:id" element={<DetailView />}/>
+        </Routes>
       </Box>
+      </BrowserRouter>
     </DataProvider>
   );
 }

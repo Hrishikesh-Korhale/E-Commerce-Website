@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { AppBar, Toolbar, Box, Typography } from "@mui/material";
 import Search from "./Search";
 import CustomButton from "./CustomButton";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled(AppBar)`
   background: #2874f0;
@@ -11,9 +12,11 @@ const CustomButtonWrapper = styled(Box)`
   margin-left: auto;
 `;
 
-const Component = styled(Box)`
+const Component = styled(Link)`
   margin-left: 12%;
   line-height: 0;
+  text-decoration: none;
+  color: inherit;
 `;
 const SubHeading = styled(Typography)`
   font-size: 10px;
@@ -33,7 +36,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 55 }}>
-        <Component>
+        <Component to={`/`}>
           <img src={logoURL} alt="Logo" style={{ width: 75 }} />
           <Box display={"flex"}>
             <SubHeading>
