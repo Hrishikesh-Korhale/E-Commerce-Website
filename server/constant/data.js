@@ -85,7 +85,7 @@ export const products = [
             discount: '40%'
         },
         quantity: 1,
-        description: '',
+        description: "Introducing Nova Professional Dryer with 1800 watts of powerful drying , so that you can get salon-like hair styling even at your home . This hair dryer features Advanced Ehd + Technology which ensures that only the right amount of heat is distributed on your hair and preventing any damage to your hair. The Shine and condition Techonlogy ensures that you hair is always silky and smooth. The Thermo protect temperature setting in this dryer also provides shine and conditions your hair, so that you have a Gorgeous looking hair style.",
         discount: 'From ₹499', 
         tagline: 'Kubra, Nova & more' 
     },

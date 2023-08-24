@@ -11,7 +11,10 @@ const productSchema = new mongoose.Schema({
   title: Object,
   price: Object,
   quantity: Number,
-  discription: String,
+  description: {
+    type: String,
+    required: true
+  },
   discount: String,
   tagline: String,
 });
