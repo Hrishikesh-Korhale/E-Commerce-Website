@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 import { ShoppingCart as Cart, FlashOn as Flash } from "@mui/icons-material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addToCart } from "../../redux/action/cartAction";
 
 const theme = createTheme({
   breakpoints: {
@@ -25,7 +29,7 @@ const LeftContainer = styled(Box)(({ theme }) => ({
 
 const Image = styled("img")({
   padding: "15px",
-  maxWidth: "100%", // Set maximum width to ensure responsiveness
+  maxWidth: "100%",
   height: "auto",
 });
 
@@ -37,6 +41,17 @@ const StyledButton = styled(Button)`
 `;
 
 const ActionItem = ({ product }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [quantity, setQuantity] = useState(1);
+
+  const { id } = product;
+
+  const addItemToCart = () => {
+    navigate("/cart");
+    dispatch(addToCart(id, quantity));
+  };
   return (
     <ThemeProvider theme={theme}>
       <LeftContainer>
@@ -46,6 +61,7 @@ const ActionItem = ({ product }) => {
         <StyledButton
           style={{ marginRight: 10, background: "#ff9f00" }}
           variant="contained"
+          onClick={() => addItemToCart()}
         >
           <Cart />
           Add to Cart

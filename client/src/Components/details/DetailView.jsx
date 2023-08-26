@@ -52,7 +52,6 @@ const DetailView = () => {
 
   const productDetails = useSelector((state) => state.getProductDetails);
   const { loading, product } = productDetails;
-  console.log(`it's a product ${product}`);
 
   useEffect(() => {
     if (product && id !== product.id) dispatch(getProductDetails(id));
