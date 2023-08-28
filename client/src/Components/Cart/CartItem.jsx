@@ -1,6 +1,10 @@
 import { Card, Box, Typography, Button, styled } from "@mui/material";
 
 import { addEllipsis } from "../Utils/util";
+import { removeFromCart } from "../../redux/action/cartAction";
+import GroupedButton from "./GroupButton";
+
+import { useDispatch } from "react-redux";
 
 const Component = styled(Card)`
   border-top: 1px solid #f0f0f0;
@@ -42,10 +46,16 @@ const CartItem = ({ item }) => {
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 
+  const Dispatch = useDispatch();
+
+  const removeItemFromCart = (id) => {
+    Dispatch(removeFromCart(id));
+  };
   return (
     <Component>
       <LeftComponent>
         <img src={item.url} style={{ height: 110, width: 110 }} alt="product" />
+        <GroupedButton />
       </LeftComponent>
       <Box style={{ margin: 20 }}>
         <Typography>{addEllipsis(item.title.longTitle)}</Typography>
@@ -67,7 +77,7 @@ const CartItem = ({ item }) => {
           &nbsp;&nbsp;&nbsp;
           <Discount component="span">{item.price.discount} off</Discount>
         </Typography>
-        <Remove>Remove</Remove>
+        <Remove onClick={() => removeItemFromCart(item.id)}>Remove</Remove>
       </Box>
     </Component>
   );

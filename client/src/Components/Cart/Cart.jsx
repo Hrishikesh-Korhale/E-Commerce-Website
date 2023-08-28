@@ -3,12 +3,16 @@ import { Box, Grid, Typography, Button } from "@mui/material";
 import CartItem from "./CartItem";
 import TotalBalance from "./TotalBalance";
 import styled from "@emotion/styled";
+import EmptyCart from "./EmptyCart";
 
 const GridContainer = styled(Grid)`
   padding: 30px 135px;
 `;
 const LeftComponent = styled(Grid)`
   padding-right: 15;
+  @media (max-width: 600px) {
+    margin-bottom: 15px;
+  }
 `;
 
 const Header = styled(Box)`
@@ -56,7 +60,7 @@ const Cart = () => {
           </Grid>
         </GridContainer>
       ) : (
-        <Box>No Item</Box>
+        <EmptyCart />
       )}
     </>
   );
