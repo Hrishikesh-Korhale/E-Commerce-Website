@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../redux/action/cartAction";
+// import { payUsingPaytm } from "../../service/api";
+// import { post } from "../Utils/Paytm";
 
 const theme = createTheme({
   breakpoints: {
@@ -43,7 +45,7 @@ const StyledButton = styled(Button)`
 const ActionItem = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  // eslint-disable-next-line
   const [quantity, setQuantity] = useState(1);
 
   const { id } = product;
@@ -52,6 +54,18 @@ const ActionItem = ({ product }) => {
     navigate("/cart");
     dispatch(addToCart(id, quantity));
   };
+  const openPaytmForm = async () => {
+    // let response = await payUsingPaytm({ data: { amount: 500, email: 'codeforinterview01@gmail.com' } });
+    // var information = {
+    //   action: 'https://securegw-stage.paytm.in/order/process',
+    //   params: response,
+    //   callbackUrl: 'http://localhost:8000/callback',
+    // };
+    // post(information);
+    alert("Your order has been placed successfully!");
+    navigate("/");
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <LeftContainer>
@@ -66,7 +80,11 @@ const ActionItem = ({ product }) => {
           <Cart />
           Add to Cart
         </StyledButton>
-        <StyledButton style={{ background: "#fb641b" }} variant="contained">
+        <StyledButton
+          style={{ background: "#fb641b" }}
+          variant="contained"
+          onClick={() => openPaytmForm()}
+        >
           <Flash /> Buy Now
         </StyledButton>
       </LeftContainer>
